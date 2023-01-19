@@ -18,6 +18,15 @@ class Handler implements URLHandler {
             }
             return "404 Not Found!";
         } 
+        else if (url.getPath().equals("/delete")) {
+            String[] parameters = url.getQuery().split("=");
+            if (parameters[0].equals("word")) {
+                String word = parameters[1];
+                strings.remove(word);
+                return String.format("Your word %s was removed from the list of words!", word);
+            }
+            return "404 Not Found!";
+        } 
         else if (url.getPath().equals("/search")) {
             String[] parameters = url.getQuery().split("=");
             if (parameters[0].equals("word")) {
